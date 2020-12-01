@@ -1,0 +1,15 @@
+---
+- hosts: localhost
+  gather_facts: False
+  connection: network_cli
+  vars:
+    - items: "32769   32770   32771   32782"
+    - result: {}
+  tasks:
+    - replace:
+        path: "test.robot"
+        replace: "@{portlist}     {{items}}"
+        regexp: '^(.*)\@\{portlist\}(.*)$\1'
+    - name: Run robot framework
+      command: "robot eveng/test.robot"
+      register: test
