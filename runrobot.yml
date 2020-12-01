@@ -4,7 +4,6 @@
   connection: network_cli
   vars:
     - items: "32769   32770   32771   32782"
-    - result: {}
   tasks:
     - replace:
         path: "test.robot"
